@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="https://kit.fontawesome.com/c12065d607.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap" rel="stylesheet">
     <title>Hacktrin XI Slideshow</title>
     <style>
         /* CSS styles for the slideshow */
@@ -9,14 +13,22 @@
             background-color: #4473ebff; /* Light Blue */
             color: gold;
             text-align: center;
-            padding-top: 10%;
+            padding-top: 4%;
+        }
+        @font-face{
+          font-family: 'VT323';
+          src:url(VT323-Regular.ttf);
         }
 
+        .anonymous-pro-regular {
+        font-family: "Anonymous Pro";
+        font-weight: 400;
+        font-size: 40px
+}
         .slide {
             display: none;
-            font-size: 24px;
             margin: 0 auto;
-            max-width: 800px;
+            max-width: 1300px;
         }
 
         .slide.active {
@@ -24,13 +36,16 @@
         }
 
         h1 {
-            font-family: 'VT323', monospace;
-            font-size: 50px;
+            font-family: 'VT323';
             margin-bottom: 20px;
+            font-size: 135px
         }
 
         p {
             margin-bottom: 40px;
+            font-size: 34px;
+            font-family: "Anonymous Pro";
+            font-weight: 400;
         }
 
         /* Styles for Countdown Clock */
@@ -39,11 +54,12 @@
             justify-content: center;
             align-items: center;
             font-size: 60px;
-            color: #ffffff; /* White text color */
-            background-color: #2a2a2a; /* Dark Gray background color */
+            font-family: 'VT323';
+            color: #4473ebff; /* White text color */
+            background-color: gold; /* Dark Gray background color */
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 0 80px rgba(0, 0, 0, 0.5);
         }
 
         #countdown span {
@@ -51,7 +67,7 @@
         }
 
         #countdown span:last-child {
-            margin-right: 0;
+            margin-right: 15px;
         }
     </style>
 </head>
@@ -59,31 +75,32 @@
     <!-- Slide 1: Welcome Message -->
     <div class="slide active">
         <h1>Welcome to Hacktrin XI</h1>
-        <p>Once you’ve signed in, help yourself to some light breakfast!<br>
+        <p>Once you have signed in, help yourself to some light breakfast!<br><br>
         Opening ceremonies will begin at 9:20, so feel free to get settled + meet new friends!</p>
     </div>
 
     <!-- Slide 2: Countdown -->
     <div class="slide">
-        <h1>Hacktrin XI Projects Due</h1>
+        <h1 style="font-size:100px">Hacktrin XI Projects Due in ...</h1>
         <div id="countdown">
-            <span id="days"></span> days,
+
             <span id="hours"></span> hours,
             <span id="minutes"></span> minutes,
             <span id="seconds"></span> seconds
         </div>
+        <p style="font-size:41px">Share your 3-minute video to hacktrin@trinityschoolnyc.org on Google Drive before 4PM!</p>
     </div>
 
     <!-- Slide 3: Project Sharing -->
     <div class="slide">
         <h1>Thank you so much for sharing your projects!</h1>
-        <p>Please help clean up the space while the judges decide a winner!<br>
+        <p>Please help clean up the space while the judges decide a winner!<br><br>
         Once the judges decide on a winner, please take a seat with your teams to hear who won!</p>
     </div>
 
     <!-- Slide 4: Event Conclusion -->
     <div class="slide">
-        <h1>Thank you so much for coming!</h1>
+        <h1 style="font-size:109px">Thank you so much for coming!</h1>
         <p>Please leave the space as you found it!<br>
         Be sure to grab some stickers + a shirt on your way out!!</p>
     </div>
@@ -101,13 +118,13 @@
             var seconds = Math.floor(remainingTime / 1000);
             var minutes = Math.floor(seconds / 60);
             var hours = Math.floor(minutes / 60);
-            var days = Math.floor(hours / 24);
+
 
             hours %= 24;
             minutes %= 60;
             seconds %= 60;
 
-            document.getElementById("days").textContent = days;
+
             document.getElementById("hours").textContent = hours;
             document.getElementById("minutes").textContent = minutes;
             document.getElementById("seconds").textContent = seconds;
