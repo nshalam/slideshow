@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hacktrin XI Slideshow</title>
+    <style>
+        /* CSS styles for the slideshow */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #4473ebff; /* Light Blue */
+            color: gold;
+            text-align: center;
+            padding-top: 10%;
+        }
+
+        .slide {
+            display: none;
+            font-size: 24px;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        h1 {
+            font-family: 'VT323', monospace;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 40px;
+        }
+
+        /* Styles for Countdown Clock */
+        #countdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            color: #ffffff; /* White text color */
+            background-color: #2a2a2a; /* Dark Gray background color */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        #countdown span {
+            margin: 0 20px;
+        }
+
+        #countdown span:last-child {
+            margin-right: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Welcome Message -->
+    <div class="slide active">
+        <h1>Welcome to Hacktrin XI</h1>
+        <p>Once you’ve signed in, help yourself to some light breakfast!<br>
+        Opening ceremonies will begin at 9:20, so feel free to get settled + meet new friends!</p>
+    </div>
+
+    <!-- Slide 2: Countdown -->
+    <div class="slide">
+        <h1>Hacktrin XI Projects Due</h1>
+        <div id="countdown">
+            <span id="days"></span> days,
+            <span id="hours"></span> hours,
+            <span id="minutes"></span> minutes,
+            <span id="seconds"></span> seconds
+        </div>
+    </div>
+
+    <!-- Slide 3: Project Sharing -->
+    <div class="slide">
+        <h1>Thank you so much for sharing your projects!</h1>
+        <p>Please help clean up the space while the judges decide a winner!<br>
+        Once the judges decide on a winner, please take a seat with your teams to hear who won!</p>
+    </div>
+
+    <!-- Slide 4: Event Conclusion -->
+    <div class="slide">
+        <h1>Thank you so much for coming!</h1>
+        <p>Please leave the space as you found it!<br>
+        Be sure to grab some stickers + a shirt on your way out!!</p>
+    </div>
+
+    <script>
+        // JavaScript for the countdown
+        function countdown() {
+            var now = new Date();
+            var eventDate = new Date(2024, 1, 24, 16, 0, 0); // February 24th at 4:00 PM
+
+            var currentTime = now.getTime();
+            var eventTime = eventDate.getTime();
+            var remainingTime = eventTime - currentTime;
+
+            var seconds = Math.floor(remainingTime / 1000);
+            var minutes = Math.floor(seconds / 60);
+            var hours = Math.floor(minutes / 60);
+            var days = Math.floor(hours / 24);
+
+            hours %= 24;
+            minutes %= 60;
+            seconds %= 60;
+
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent = hours;
+            document.getElementById("minutes").textContent = minutes;
+            document.getElementById("seconds").textContent = seconds;
+
+            setTimeout(countdown, 1000);
+        }
+
+        countdown();
+
+        // JavaScript for slide navigation
+        var slideIndex = 0;
+        var slides = document.getElementsByClassName("slide");
+        showSlide(slideIndex);
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "ArrowRight") {
+                moveSlide(1);
+            }
+            if (event.key === "ArrowLeft") {
+                moveSlide(-1);
+            }
+        });
+
+        function moveSlide(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function showSlide(n) {
+            var i;
+            if (n >= slides.length) { slideIndex = 0 }
+            if (n < 0) { slideIndex = slides.length - 1 }
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            slides[slideIndex].style.display = "block";
+        }
+    </script>
+</body>
+</html>
